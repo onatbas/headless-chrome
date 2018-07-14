@@ -20,6 +20,8 @@ change it to add in your tests. Building this container takes a long time
 and if you're not going to add this to hub, you will want to prevent this
 fro being built over and over again.
 
+You'll need to build this one first before moving to test suites. You may 
+simply use the shell script in the folder.
 
 ### /robot
 
@@ -39,20 +41,37 @@ directories, one for hosting the files and the second for outputs.
 
 In this example, I chose
 
-1. /app -> to keep the source files in.
-2. /output -> to transfer the output files to.
+1. **/app** -> to keep the source files in.
+2. **/output** -> to transfer the output files to.
 
 
-Using ADD command, add your source files into the image.
-
-
+Using ADD command, add your source files into the image.  
 Using WORKDIR, specify your output folder so any generated source 
-will be added under it.
-
-
+will be added under it.  
 Run your tests using the absolute paths, or ideally using another script
-to run all your scripts.
-
-
+to run all your scripts.  
 Remember that headless chrome setup should be added to your source folder,
-for more information, see test.robot.
+for more information, see test.robot.  
+
+
+To build the test suite image, use this command
+
+	docker build . -t bar
+
+
+To run your tests and get the output folder, you'll need to run the container
+in a specific way.
+On unix-like systems:
+
+	docker run -tiv ~/path/to/output/:/output bar
+
+
+On windows, I recommend using cmd instead of bash.
+
+	docker run -tiv C:\path\to\output:/output bar
+Or with bash
+
+	winpty docker run -tiv C:\path\to\output:/output bar
+
+
+
