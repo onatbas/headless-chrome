@@ -23,6 +23,24 @@ fro being built over and over again.
 You'll need to build this one first before moving to test suites. You may 
 simply use the shell script in the folder.
 
+
+
+### /jdk
+
+This folder contains a docker image which has stuff like jdk and maven 
+out of the box and is built on top of headlesschroe image. Extending on 
+this, you can run your own java-based tests.
+
+
+Since mvn install takes too long, I recommmend building an interim
+docker image that simply does 
+
+mvn install -DskipTests 
+
+And then another image to build on top of that to install, package and
+run tests. This will save you a lot of time.
+
+
 ### /robot
 
 This is a sample test suite. The test suit in there is built with 
