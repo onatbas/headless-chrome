@@ -25,8 +25,8 @@ RUN chown root:root /usr/local/bin/chromedriver
 RUN chmod 0755 /usr/local/bin/chromedriver
 
 # Install Selenium.
-RUN wget -N http://selenium-release.storage.googleapis.com/3.13/selenium-server-standalone-3.13.0.jar -P ~/
-RUN mv -f ~/selenium-server-standalone-3.13.0.jar /usr/local/bin/selenium-server-standalone.jar
+RUN wget -N http://selenium-release.storage.googleapis.com/3.12/selenium-server-standalone-3.12.0.jar -P ~/
+RUN mv -f ~/selenium-server-standalone-3.12.0.jar /usr/local/bin/selenium-server-standalone.jar
 RUN chown root:root /usr/local/bin/selenium-server-standalone.jar
 RUN chmod 0755 /usr/local/bin/selenium-server-standalone.jar
 
